@@ -19,8 +19,8 @@ permitindo que decisores políticos e a população em geral auditem a capilarid
 ---
 
 ## 🔍 Perguntas-Chave que o Dashboard Responde
-1. **De que forma as UBS estão espalhadas pelo território brasileiro e qual é a sua real abrangência geográfica?**
-2. **Existe uma concentração desigual de unidades entre as macrorregiões do país quando analisamos a taxa de UBS por
+1. **De que forma as UBS estão espalhadas pelo território brasileiro e qual é o seu real alcance geográfico?**
+2. **Existe uma concentração desigual de unidades entre as regiões do país quando analisamos a taxa de UBS por
    100 mil habitantes?**
 4. **Como se comporta a densidade de unidades de saúde quando aumentamos a granularidade descendo do nível Nacional
    para o Estadual e Municipal?**
@@ -35,21 +35,16 @@ permitindo que decisores políticos e a população em geral auditem a capilarid
   para correlacionar códigos de 6 e 7 dígitos e evitar inconsistências de registro.
        https://www.ibge.gov.br/explica/codigos-dos-municipios.php
   
-* **Dados de Regiões:** Malha de correspondência geoestratégica nacional para agregação geral na última camada.
-
----
-
-## 🛠️ Tecnologias Utilizadas
-* **Python 3.13**
-* **Pandas** (Tratamento, limpeza e engenharia de recursos)
-* **Streamlit** (Construção da interface e mapas interativos)
-* **Xlrd / Openpyxl** (Motores de leitura de arquivos legados do IBGE)
+* **Dados de Regiões:** planilha imputada manualmente, contendo os dados referentes às UF's brasileiras como:
+     - Código IBGE da UF
+     - Nome da UF
+     - Região da UF
 
 ---
 
 ## 📂 Estrutura de Pastas (Arquitetura Medalhão)
 ├── bronze/          # Dados JSON puros coletados diretamente do DataSUS e tabelas originais do IBGE
-├── silver/          # Dados limpos, com coordenadas tratadas e de-para de municípios unificados (.csv)
+├── silver/          # Dados limpos, com coordenadas tratadas e de-para de municípios e UF's unificados
 ├── gold/            # Tabelas agregadas por Região, UF e Município prontas para o Dashboard
 ├── insights.py      # Arquivo principal de execução do Dashboard Streamlit
 └── ubs_gold.py      # Script de processamento e agregação da camada Gold
