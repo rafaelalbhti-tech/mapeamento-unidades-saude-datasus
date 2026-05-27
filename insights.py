@@ -17,10 +17,8 @@ df_silver, df_regional, df_estadual, df_municipal = carregar_dados_gold()
 st.title("🏥 Sistema de Análise de Dispersão e Abrangência do SUS")
 st.markdown("---")
 
-# Definição das abas para o Drill-Down de granularidade
 aba1, aba2, aba3, aba4 = st.tabs(["🌎 Visão Nacional", "🗺️ Visão Regional", "📍 Visão Estadual", "🏙️ Detalhamento Municipal"])
 
-# --- 1. VISÃO NACIONAL ---
 with aba1:
     st.subheader("Métricas Consolidadas do Território Nacional")
     c1, c2, c3 = st.columns(3)
@@ -29,10 +27,8 @@ with aba1:
     c3.metric("Média Nacional (UBS / 100k Hab.)", f"{(len(df_silver)/211000000)*100000:.2f}")
     
     st.markdown("#### Distribuição Espacial Absoluta")
-    # Amostra estatística para o mapa nacional não travar a renderização do browser
     st.map(df_silver[["latitude", "longitude"]].sample(15000, random_state=42))
-
-# --- 2. VISÃO REGIONAL ---
+    
 with aba2:
     st.subheader("Análise Macrorregional de Infraestrutura")
     
@@ -46,7 +42,6 @@ with aba2:
         
     st.dataframe(df_regional, use_container_width=True)
 
-# --- 3. VISÃO ESTADUAL ---
 with aba3:
     st.subheader("Disparidades e Concentração por Unidade da Federação")
     
@@ -56,7 +51,6 @@ with aba3:
     st.bar_chart(data=df_est_filtrado, x="nome_uf", y="total_ubs")
     st.dataframe(df_est_filtrado, use_container_width=True)
 
-# --- 4. VISÃO MUNICIPAL ---
 with aba4:
     st.subheader("Foco no Município (Nível de Maior Granularidade)")
     

@@ -12,7 +12,6 @@ while True:
     response = requests.get(url, timeout=15)
     dados = response.json()
     
-    # se não houver mais dados, para o laço
     if not dados.get("ubs"):
         break
         

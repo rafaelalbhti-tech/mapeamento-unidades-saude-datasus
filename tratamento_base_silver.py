@@ -37,11 +37,9 @@ df_tratado = df_tratado.rename(columns={
 #segundo DePara
 df_depara_regiao = pd.read_excel("bronze/DePara_regiao.xlsx")
 
-# Limpar possíveis espaços em branco nos nomes dos estados para não quebrar o merge
 df_tratado["nome_uf"] = df_tratado["nome_uf"].astype(str).str.strip()
 df_depara_regiao["UF"] = df_depara_regiao["UF"].astype(str).str.strip()
 
-# Cruzamento 2: Adicionando a coluna de Região baseada no Nome_UF
 df_final = pd.merge(
     df_tratado,
     df_depara_regiao[["UF", "Região"]],
@@ -57,7 +55,6 @@ df_final["longitude"] = df_final["longitude"].astype(str).str.strip().str.replac
 df_final["latitude"] = pd.to_numeric(df_final["latitude"], errors='coerce')
 df_final["longitude"] = pd.to_numeric(df_final["longitude"], errors='coerce')
 
-# Remove quem não tem mapa (essencial para manter o Streamlit leve e funcional)
 df_final = df_final.dropna(subset=["latitude", "longitude"])
 
 
