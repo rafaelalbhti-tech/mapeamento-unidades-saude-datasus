@@ -39,6 +39,7 @@ permitindo que decisores políticos e a população em geral auditem a capilarid
      - Código IBGE da UF
      - Nome da UF
      - Região da UF
+* **Uso de IA (Gemini)** Para ganhar eficiência, além de executar tarefas repetitivas. Foi usada principalmente na montagem final do Dashboard devido ao curto conhecimento a respeito da biblioteca Streamlit.
 
 ---
 
